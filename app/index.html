@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/At.js/dist/css/jquery.atwho.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+  <div class="yobi-editor">
+    <form action="#">
+      <input id="editor-title" type="text" class="col-xs-12" placeholder="titles here">
+      <div>
+        <span id="markdown-help-btn" class="label label-default">마크다운 가이드</span>
+        <span id="markdown-simple-input-btn" class="label label-default">마크다운 간편입력기</span>
+      </div>
+      <div id="markdown-help">
+        <ng-include src="'help/markdown.html'"></ng-include>
+      </div>
+      <textarea id="editor-contents" rows="12" class="col-xs-12"></textarea>
+    </form>
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  <script src="bower_components/Caret.js/dist/jquery.caret.js"></script>
+  <script src="bower_components/At.js/dist/js/jquery.atwho.js"></script>
+  <script>
+    $('#editor-contents').atwho({
+      at: "@",
+      data:['npcode', 'changsung', 'doortts']
+    }).atwho({
+      at: "#",
+      data: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
+    });
+  </script>
+</body>
+</html>
