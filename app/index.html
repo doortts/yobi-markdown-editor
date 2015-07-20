@@ -26,7 +26,7 @@
         <ng-include src="'help/markdown.html'"></ng-include>
       </div>
       <div class="row">
-        <textarea id="editor-contents" rows="12" class="col-xs-12"></textarea>
+        <textarea rows="12" class="editor-contents col-xs-12"></textarea>
       </div>
       <div class="row editor-contents-footer">
         <div class="pull-left col-md-6">
@@ -45,7 +45,7 @@
       </div>
     </form>
   </div>
-<hr>
+<hr/>
   <div class="yobi-editor container-fluid" ng-controller="EditorCtrl">
     <form action="#">
       <div class="row">
@@ -59,7 +59,7 @@
         <ng-include src="'help/markdown.html'"></ng-include>
       </div>
       <div class="row">
-        <textarea id="editor-contents" rows="12" class="col-xs-12"></textarea>
+        <textarea rows="12" class="editor-contents col-xs-12"></textarea>
       </div>
       <div class="row editor-contents-footer">
         <div class="pull-left col-md-6">
@@ -92,7 +92,7 @@
   <script src="bower_components/Caret.js/dist/jquery.caret.js"></script>
   <script src="bower_components/At.js/dist/js/jquery.atwho.js"></script>
   <script>
-    $('#editor-contents').atwho({
+    $('.editor-contents').atwho({
       at: "@",
       data:['npcode', 'changsung', 'doortts']
     }).atwho({
