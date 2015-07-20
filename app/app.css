@@ -15,3 +15,6 @@
   margin-bottom: 0;
   font-size: 11px;
 }
+.yobi-editor .editor-contents-footer {
+  background-color: lightgray;
+}
