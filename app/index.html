@@ -13,72 +13,9 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <div class="yobi-editor container-fluid" ng-controller="EditorCtrl">
-    <form action="#">
-      <div class="row">
-        <input id="editor-title" type="text" class="col-xs-12" placeholder="titles here">
-      </div>
-      <div class="row">
-        <span id="markdown-help-btn" ng-click="$scope.showHelp = !$scope.showHelp" class="btn">마크다운 가이드</span>
-        <span id="markdown-simple-input-btn" class="btn">마크다운 간편입력기</span>
-      </div>
-      <div class="markdown-help" ng-show="$scope.showHelp">
-        <ng-include src="'help/markdown.html'"></ng-include>
-      </div>
-      <div class="row">
-        <textarea rows="12" class="editor-contents col-xs-12"></textarea>
-      </div>
-      <div class="row editor-contents-footer">
-        <div class="pull-left col-md-6">
-          <button class="btn btn-default">attachment +</button> or mouse dragging & dropping
-        </div>
-        <div class="pull-right editor-optionals btn">
-          optionals here..
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 col-xs-offset-4">
-            <input type="button" name="cancel" value="cancel" class="btn btn-default">
-            <input type="button" name="preview" value="preview" class="btn btn-default">
-            <input type="button" name="save" value="save" class="btn btn-danger">
-        </div>
-      </div>
-    </form>
-  </div>
-<hr/>
-  <div class="yobi-editor container-fluid" ng-controller="EditorCtrl">
-    <form action="#">
-      <div class="row">
-        <input id="editor-title" type="text" class="col-xs-12" placeholder="titles here">
-      </div>
-      <div class="row">
-        <span id="markdown-help-btn" ng-click="$scope.showHelp = !$scope.showHelp" class="btn">마크다운 가이드</span>
-        <span id="markdown-simple-input-btn" class="btn">마크다운 간편입력기</span>
-      </div>
-      <div class="markdown-help" ng-show="$scope.showHelp">
-        <ng-include src="'help/markdown.html'"></ng-include>
-      </div>
-      <div class="row">
-        <textarea rows="12" class="editor-contents col-xs-12"></textarea>
-      </div>
-      <div class="row editor-contents-footer">
-        <div class="pull-left col-md-6">
-          <button class="btn btn-default">attachment +</button> or mouse dragging & dropping
-        </div>
-        <div class="pull-right editor-optionals btn">
-          optionals here..
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 col-xs-offset-4">
-          <input type="button" name="cancel" value="cancel" class="btn btn-default">
-          <input type="button" name="preview" value="preview" class="btn btn-default">
-          <input type="button" name="save" value="save" class="btn btn-danger">
-        </div>
-      </div>
-    </form>
-  </div>
-
+  <ng-include src="'editor.html'"></ng-include>
+  <hr/>
+  <ng-include src="'editor.html'"></ng-include>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
