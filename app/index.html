@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-  <ng-include src="'editor.html'"></ng-include>
-  <hr/>
-  <ng-include src="'editor.html'"></ng-include>
+<body ng-controller="EditorCtrl">
+<yobi-editor editor="john"></yobi-editor>
+<hr>
+<yobi-editor editor="jane"></yobi-editor>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -28,14 +28,5 @@
   <script src="components/version/interpolate-filter.js"></script>
   <script src="bower_components/Caret.js/dist/jquery.caret.js"></script>
   <script src="bower_components/At.js/dist/js/jquery.atwho.js"></script>
-  <script>
-    $('.editor-contents').atwho({
-      at: "@",
-      data:['npcode', 'changsung', 'doortts']
-    }).atwho({
-      at: "#",
-      data: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
-    });
-  </script>
 </body>
 </html>
