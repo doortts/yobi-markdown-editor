@@ -5,10 +5,18 @@
     </div>
     <div class="row">
       <span id="markdown-help-btn" ng-click="$scope.showHelp = !$scope.showHelp" class="btn">마크다운 가이드</span>
-      <span id="markdown-simple-input-btn" class="btn">마크다운 간편입력기</span>
+      <span id="markdown-simple-input-btn" ng-click="$scope.showSimpleInput = !$scope.showSimpleInput" class="btn">마크다운 간편입력기</span>
     </div>
-    <div class="markdown-help">
+    <div class="markdown-help" ng-show="$scope.showHelp">
       <ng-include src="'help/markdown.html'"></ng-include>
+    </div>
+    <div ng-show="$scope.showSimpleInput">
+      <span class="btn btn-default">h1</span>
+      <span class="btn btn-default">h2</span>
+      <span class="btn btn-default">h3</span>
+      <span class="btn btn-default">bold</span>
+      <span class="btn btn-default">strike</span>
+      <span class="btn btn-default">link</span>
     </div>
     <div class="row">
       <textarea rows="12" class="editor-contents col-xs-12"></textarea>

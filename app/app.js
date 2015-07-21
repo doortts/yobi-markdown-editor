@@ -23,14 +23,12 @@ angular.module('myApp', [
         });
 
         function link( scope, element, attributes ) {
-            $(function(){
-                $('.editor-contents').atwho({
-                    at: "@",
-                    data:['npcode', 'changsung', 'doortts']
-                }).atwho({
-                    at: "#",
-                    data: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
-                });
+            $(element).find('.editor-contents').atwho({
+                at: "@",
+                data:['npcode', 'changsung', 'doortts']
+            }).atwho({
+                at: "#",
+                data: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
             });
         }
     });
