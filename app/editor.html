@@ -11,16 +11,7 @@
       <ng-include src="'help/markdown.html'"></ng-include>
     </div>
     <div ng-show="$scope.showSimpleInput">
-      <div class="btn-group">
-        <span class="btn btn-sm btn-default">h1</span>
-        <span class="btn btn-sm btn-default">h2</span>
-        <span class="btn btn-sm btn-default">h3</span>
-      </div>
-      <div class="btn-group">
-      <span class="btn btn-sm btn-default">bold</span>
-      <span class="btn btn-sm btn-default">strike</span>
-      </div>
-      <span class="btn btn-sm btn-default">link</span>
+      <ng-include src="'help/simple-input-buttons.html'"></ng-include>
     </div>
     <div class="row">
       <textarea rows="12" class="editor-contents col-xs-12">{{::editor.body}}</textarea>
