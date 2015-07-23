@@ -9,6 +9,21 @@ angular.module('myApp', [
       $routeProvider.otherwise({redirectTo: '/view1'});
     }])
     .service("editorService", function(){
+        var editor = {
+            get title(){
+                return this._title || "";
+            },
+            set title(text){
+                this._title = text;
+            },
+            get body(){
+                return this._body || "";
+            },
+            set body(text){
+                this._body = text;
+            }
+        };
+
         var mention = {
             users: ['npcode', 'changsung', 'doortts'],
             issues: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
@@ -19,15 +34,11 @@ angular.module('myApp', [
             },
             issues: function(){
                 return mention.issues;
-            }
+            },
+            editor: editor
         }
     })
     .controller('EditorCtrl', ['$scope', 'editorService', function($scope, editorService){
-        $scope.user =  editorService.users();
-        $scope.issueMention = editorService.issues();
-        $scope.getUsers = function(){
-            return editorService.users();
-        }
         $scope.mention = {
             users: editorService.users(),
             issues: editorService.issues()
@@ -43,16 +54,19 @@ angular.module('myApp', [
                 action: "@",
                 method: "@",
                 userMention: "&",
-                issueMention: "&"
+                issueMention: "&",
+                contents: "="
             },
-            compile: function(element, attrs){
-                if (!attrs.method){
-                    attrs.method = "POST";
-                }
+            controller: function($scope, editorService){
+                $scope.editor = editorService.editor;
+                $scope.editor = $scope.contents;
             }
         });
 
         function link( scope, element, attributes) {
+            if (!attributes.method){
+                attributes.method = "POST";
+            }
             var editorContents = $(element).find('.editor-contents');
             if(scope.mentions && scope.mentions.indexOf('@') > -1){
                 editorContents.atwho({
