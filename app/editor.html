@@ -1,7 +1,7 @@
 <div class="yobi-editor container-fluid">
   <form action="{{action}}" method="{{method}}">
     <div class="row">
-      <input type="text" class="col-xs-12" placeholder="titles here" value="{{editor.title}}">
+      <input type="text" class="col-xs-12" placeholder="titles here" value="{{::editor.title}}">
     </div>
     <div class="row">
       <span ng-click="$scope.showHelp = !$scope.showHelp" class="btn btn-sm btn-default markdown-help-btn" ng-class="{active: $scope.showHelp}">마크다운 가이드</span>
@@ -23,7 +23,7 @@
       <span class="btn btn-sm btn-default">link</span>
     </div>
     <div class="row">
-      <textarea rows="12" class="editor-contents col-xs-12">{{editor.body}}</textarea>
+      <textarea rows="12" class="editor-contents col-xs-12">{{::editor.body}}</textarea>
     </div>
     <div class="row editor-contents-footer">
       <div class="pull-left col-md-6">

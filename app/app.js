@@ -1,29 +1,12 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 angular.module('myApp', [
       'ngRoute',
       'myApp.version'
     ]).
     config(['$routeProvider', function($routeProvider) {
-      $routeProvider.otherwise({redirectTo: '/view1'});
     }])
     .service("editorService", function(){
-        var editor = {
-            get title(){
-                return this._title || "";
-            },
-            set title(text){
-                this._title = text;
-            },
-            get body(){
-                return this._body || "";
-            },
-            set body(text){
-                this._body = text;
-            }
-        };
-
         var mention = {
             users: ['npcode', 'changsung', 'doortts'],
             issues: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
@@ -34,15 +17,14 @@ angular.module('myApp', [
             },
             issues: function(){
                 return mention.issues;
-            },
-            editor: editor
+            }
         }
     })
     .controller('EditorCtrl', ['$scope', 'editorService', function($scope, editorService){
         $scope.mention = {
             users: editorService.users(),
             issues: editorService.issues()
-        }
+        };
     }])
     .directive('yobiEditor', function(){
         return ({
@@ -58,12 +40,13 @@ angular.module('myApp', [
                 contents: "="
             },
             controller: function($scope, editorService){
-                $scope.editor = editorService.editor;
                 $scope.editor = $scope.contents;
+                $scope.defaultMentionUsers = editorService.users();
+                $scope.defaultMentionIssues = editorService.issues();
             }
         });
 
-        function link( scope, element, attributes) {
+        function link(scope, element, attributes) {
             if (!attributes.method){
                 attributes.method = "POST";
             }
@@ -71,13 +54,13 @@ angular.module('myApp', [
             if(scope.mentions && scope.mentions.indexOf('@') > -1){
                 editorContents.atwho({
                     at: "@",
-                    data: scope.userMention()
+                    data: scope.userMention() || scope.defaultMentionUsers
                 })
             }
             if(scope.mentions && scope.mentions.indexOf('#') > -1){
                 editorContents.atwho({
                     at: "#",
-                    data: scope.issueMention()
+                    data: scope.issueMention() || scope.defaultMentionIssues
                 })
             }
         }
