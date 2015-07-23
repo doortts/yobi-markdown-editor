@@ -1,11 +1,11 @@
 <div class="yobi-editor container-fluid">
   <form action="#">
     <div class="row">
-      <input id="editor-title" type="text" class="col-xs-12" placeholder="titles here" value="{{editor.title}}">
+      <input type="text" class="col-xs-12" placeholder="titles here" value="{{editor.title}}">
     </div>
     <div class="row">
-      <span id="markdown-help-btn" ng-click="$scope.showHelp = !$scope.showHelp" class="btn btn-sm btn-default" ng-class="{active: $scope.showHelp}">마크다운 가이드</span>
-      <span id="markdown-simple-input-btn" ng-click="$scope.showSimpleInput = !$scope.showSimpleInput" class="btn btn-sm btn-default" ng-class="{active: $scope.showSimpleInput}">마크다운 간편입력기</span>
+      <span ng-click="$scope.showHelp = !$scope.showHelp" class="btn btn-sm btn-default markdown-help-btn" ng-class="{active: $scope.showHelp}">마크다운 가이드</span>
+      <span ng-click="$scope.showSimpleInput = !$scope.showSimpleInput" class="btn btn-sm btn-default markdown-simple-input-btn" ng-class="{active: $scope.showSimpleInput}">마크다운 간편입력기</span>
     </div>
     <div class="markdown-help" ng-show="$scope.showHelp">
       <ng-include src="'help/markdown.html'"></ng-include>
