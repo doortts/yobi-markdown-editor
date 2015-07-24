@@ -1,12 +1,14 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular
-    .module('yobi', [])
-    .controller('yobiEditorCtrl', ['$scope', 'editorService', yobiEditorCtrl])
+    angular
+        .module('yobi')
+        .controller('yobiEditorCtrl', ['$scope', 'yobiEditorSvc', yobiEditorCtrl])
 
-function yobiEditorCtrl($scope, editorService){
-    $scope.mention = {
-        users: editorService.users(),
-        issues: editorService.issues()
-    };
-}
+    function yobiEditorCtrl($scope, yobiEditorSvc) {
+        $scope.mention = {
+            users: yobiEditorSvc.users(),
+            issues: yobiEditorSvc.issues()
+        };
+    }
+})();
