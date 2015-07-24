@@ -34,18 +34,20 @@
             var mentionChar = {
                 user: "@",
                 issue: "#"
-            }
+            };
 
             var editorContents = $(element).find('.editor-contents');
 
-            if (_isUserMentionAllowed()) {
+            // attach user mention data if allowed
+            if (_isMentionAllowed(mentionChar.user)) {
                 editorContents.atwho({
                     at: mentionChar.user,
                     data: scope.mentionUsers() || scope.defaultMentionUsers
                 });
             }
 
-            if (_isIssueMentionAllowed()) {
+            // attach issue mention data if allowed
+            if (_isMentionAllowed(mentionChar.issue)) {
                 editorContents.atwho({
                     at: mentionChar.issue,
                     data: scope.mentionIssues() || scope.defaultMentionIssues
@@ -59,12 +61,8 @@
                 }
             }
 
-            function _isUserMentionAllowed() {
-                return scope.mentions && scope.mentions.indexOf(mentionChar.user) > -1;
-            }
-
-            function _isIssueMentionAllowed() {
-                return scope.mentions && scope.mentions.indexOf(mentionChar.issue) > -1;
+            function _isMentionAllowed(char) {
+                return scope.mentions && scope.mentions.indexOf(char) > -1;
             }
         }
     }
