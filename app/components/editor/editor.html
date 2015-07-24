@@ -8,10 +8,10 @@
       <span ng-click="showSimpleInput = !showSimpleInput" class="btn btn-sm btn-default markdown-simple-input-btn" ng-class="{active: showSimpleInput}">마크다운 간편입력기</span>
     </div>
     <div class="markdown-help" ng-show="showHelp">
-      <ng-include src="'editor/help/markdown.html'"></ng-include>
+      <ng-include src="MODULE_ROOT_PATH + '/help/markdown.html'"></ng-include>
     </div>
     <div ng-show="showSimpleInput">
-      <ng-include src="'editor/help/simple-input-buttons.html'"></ng-include>
+      <ng-include src="MODULE_ROOT_PATH + '/help/simple-input-buttons.html'"></ng-include>
     </div>
     <div class="row">
       <textarea rows="12" class="editor-contents col-xs-12">{{::contents.body}}</textarea>

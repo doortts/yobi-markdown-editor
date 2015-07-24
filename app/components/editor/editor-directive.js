@@ -6,9 +6,10 @@
         .directive('yobiEditor', yobiEditor);
 
     function yobiEditor() {
+        var MODULE_ROOT_PATH = angular.module('yobi.editor').MODULE_ROOT_PATH;
         return ({
             link: _link,
-            templateUrl: "./components/editor/editor.html",
+            templateUrl: MODULE_ROOT_PATH + "/editor.html",
             restrict: 'E',
             scope: {
                 mentions: "@",
@@ -24,6 +25,7 @@
         function _controller($scope, yobiEditorSvc) {
             $scope.defaultMentionUsers = yobiEditorSvc.fallbackUsers;
             $scope.defaultMentionIssues = yobiEditorSvc.issues();
+            $scope.MODULE_ROOT_PATH = MODULE_ROOT_PATH;
         }
 
         function _link(scope, element, attributes) {
