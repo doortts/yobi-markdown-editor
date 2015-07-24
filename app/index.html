@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="yobi">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-controller="EditorCtrl">
+<body ng-controller="yobiEditorCtrl">
 <yobi-editor action="/dlab/hive" mentions="@#" contents="{title: 'gogo', body: 'go to home!'}" user-mention="mention.users" issue-mention="mention.issues"></yobi-editor>
 <hr>
 <yobi-editor method="get" mentions="@"></yobi-editor>
@@ -20,7 +20,7 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="app.js"></script>
+  <script src="yobi.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>

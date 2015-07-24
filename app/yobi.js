@@ -1,14 +1,9 @@
 'use strict';
 
-angular.module('myApp', [
-      'ngRoute',
-      'myApp.version'
-    ]).
-    config(['$routeProvider', function($routeProvider) {
-    }])
-    .service("editorService", function(){
+angular.module('yobi', [])
+    .service("yobiEditorSvc", function(){
         var mention = {
-            users: ['npcode', 'changsung', 'doortts'],
+            users: ['James Gordon', 'Selina Kyle', 'Bruce Wayne', 'Alfred Pennyworth', 'Barbara Gordon'],
             issues: ["#1. 첫번째 이슈", "#2. 두번째 이슈", "#3. 세번째 이슈"]
         }
         return {
@@ -20,10 +15,10 @@ angular.module('myApp', [
             }
         }
     })
-    .controller('EditorCtrl', ['$scope', 'editorService', function($scope, editorService){
+    .controller('yobiEditorCtrl', ['$scope', 'yobiEditorSvc', function($scope, yobiEditorSvc){
         $scope.mention = {
-            users: editorService.users(),
-            issues: editorService.issues()
+            users: yobiEditorSvc.users(),
+            issues: yobiEditorSvc.issues()
         };
     }])
     .directive('yobiEditor', function(){
@@ -39,10 +34,10 @@ angular.module('myApp', [
                 issueMention: "&",
                 contents: "="
             },
-            controller: function($scope, editorService){
+            controller: function($scope, yobiEditorSvc){
                 $scope.editor = $scope.contents;
-                $scope.defaultMentionUsers = editorService.users();
-                $scope.defaultMentionIssues = editorService.issues();
+                $scope.defaultMentionUsers = yobiEditorSvc.users();
+                $scope.defaultMentionIssues = yobiEditorSvc.issues();
             }
         });
 
