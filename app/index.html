@@ -3,31 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Yobi Editor sample page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/At.js/dist/css/jquery.atwho.css">
   <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-controller="yobiEditorCtrl">
-<yobi-editor action="/dlab/hive" mentions="@#" contents="{title: 'gogo', body: 'go to home!'}" user-mention="mention.users" issue-mention="mention.issues"></yobi-editor>
-<hr>
-<yobi-editor method="get" mentions="@"></yobi-editor>
+<body ng-controller="yobiEditorCtrl as editor">
+<yobi-editor action="/dlab/hive" contents="{title: 'gogo', body: 'go to home!'}" mentions="@#"  mention-users="editor.mention.users"></yobi-editor>
+<hr/>
+<yobi-editor method="get" mentions="@" contents="{title: '@ mention only available with default users'}"></yobi-editor>
+<hr/>
+<yobi-editor></yobi-editor>
+
+<!-- scripts files from here-->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="yobi.js"></script>
-  <script src="yobiEditorSvc.js"></script>
-  <script src="yobiEditorCtrl.js"></script>
-  <script src="yobiEditorDir.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <!-- yobi Editor module from here -->
+  <script src="components/editor/editor.js"></script>
+  <script src="components/editor/editor-service.js"></script>
+  <script src="components/editor/editor-controller.js"></script>
+  <script src="components/editor/editor-directive.js"></script>
   <script src="bower_components/Caret.js/dist/jquery.caret.js"></script>
   <script src="bower_components/At.js/dist/js/jquery.atwho.js"></script>
+  <!-- yobi Editor module end here -->
+<!-- scripts files end here-->
 </body>
 </html>

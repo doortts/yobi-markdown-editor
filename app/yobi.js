@@ -1,6 +1,5 @@
+// assuming 'yobi' is top module
 (function() {
     'use strict';
-
-
-    angular.module('yobi', []);
+    angular.module('yobi', ['yobi.editor'])
 })();
