@@ -29,41 +29,74 @@
         }
 
         function _link(scope, element, attributes) {
-            _setFormMethodToPostIfUndefined();
+            scope.renderMarkdownText = renderMarkdownText;
+            scope.showPreview = showPreview;
 
-            var mentionChar = {
-                user: "@",
-                issue: "#"
-            };
+            _attachHidePreviewEventAtDocumentClick();
+            _setFormMethodToPostIfUndefined(attributes);
+            _attachMentions(scope);
 
-            var editorContents = $(element).find('.editor-contents');
+            ///////////////////////////////////////////
+            // private functions are from here..
+            //////////////////////////////////////////
+            /**
+             * attach hide event when user click document
+             * @private
+             */
+            function _attachHidePreviewEventAtDocumentClick() {
+                $(document).off("click.hide-preview");
+                $(document).on("click.hide-preview", function() {
+                    $(".rendered-preview").hide();
+                });
+            }
 
-            scope.renderMarkdownText = function(){
+            function showPreview(){
+                var otherPreviews = $(".rendered-preview");
+                var preview = $(element).find(".rendered-preview");
+
+                otherPreviews.hide();
+                preview.addClass("preview-background");
+                preview.fadeIn(100);
+                preview.on("click", function(event) {
+                    event.stopPropagation();
+                });
+            }
+
+            function renderMarkdownText(){
                 var text = $(element).find('.editor-contents').val();
                 var renderedPreview = $(element).find('.rendered-preview');
                 renderedPreview.html(marked(text));
-            };
-
-            // attach user mention data if allowed
-            if (_isMentionAllowed(mentionChar.user)) {
-                editorContents.atwho({
-                    at: mentionChar.user,
-                    data: scope.mentionUsers() || scope.defaultMentionUsers
-                });
+                showPreview();
             }
 
-            // attach issue mention data if allowed
-            if (_isMentionAllowed(mentionChar.issue)) {
-                editorContents.atwho({
-                    at: mentionChar.issue,
-                    data: scope.mentionIssues() || scope.defaultMentionIssues
-                });
-            }
-
-            // private functions from here..
-            function _setFormMethodToPostIfUndefined() {
+            function _setFormMethodToPostIfUndefined(attributes) {
                 if (!attributes.method) {
                     attributes.method = "POST";
+                }
+            }
+
+            function _attachMentions(scope) {
+                var mentionChar = {
+                    user: "@",
+                    issue: "#"
+                };
+
+                var editorContents = $(element).find('.editor-contents');
+
+                // attach user mention data if allowed
+                if (_isMentionAllowed(mentionChar.user)) {
+                    editorContents.atwho({
+                        at: mentionChar.user,
+                        data: scope.mentionUsers() || scope.defaultMentionUsers
+                    });
+                }
+
+                // attach issue mention data if allowed
+                if (_isMentionAllowed(mentionChar.issue)) {
+                    editorContents.atwho({
+                        at: mentionChar.issue,
+                        data: scope.mentionIssues() || scope.defaultMentionIssues
+                    });
                 }
             }
 

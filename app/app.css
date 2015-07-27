@@ -22,3 +22,16 @@
 .yobi-editor .editor-contents-footer {
   background-color: lightgray;
 }
+.yobi-editor .rendered-preview {
+  margin-left: 10%;
+  width: 90%;
+  height: 100%;
+  z-index: 999;
+  position: absolute;
+  overflow: auto;
+  display: none;
+}
+.preview-background {
+  background-color: #fcfcfc;
+  border: 1px solid #ccc;
+}
