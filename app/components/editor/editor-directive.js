@@ -38,6 +38,12 @@
 
             var editorContents = $(element).find('.editor-contents');
 
+            scope.renderMarkdownText = function(){
+                var text = $(element).find('.editor-contents').val();
+                var renderedPreview = $(element).find('.rendered-preview');
+                renderedPreview.html(marked(text));
+            };
+
             // attach user mention data if allowed
             if (_isMentionAllowed(mentionChar.user)) {
                 editorContents.atwho({

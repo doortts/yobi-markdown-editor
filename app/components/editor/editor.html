@@ -26,9 +26,12 @@
     </div>
     <div class="row">
       <div class="col-xs-5 col-xs-offset-4">
-        <input type="button" name="preview" value="preview" class="btn btn-default">
+        <input type="button" name="preview" value="preview" class="btn btn-default" ng-click="renderMarkdownText()">
         <input type="submit" name="save" value="save" class="btn btn-danger">
       </div>
     </div>
   </form>
+  <div class="row markdown-rendered">
+      <div class="rendered-preview col-xs-12"></div>
+  </div>
 </div>
